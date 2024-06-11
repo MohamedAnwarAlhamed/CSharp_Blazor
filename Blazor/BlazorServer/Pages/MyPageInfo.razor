@@ -1,0 +1,30 @@
+﻿@page "/MyPage/MyPageInfo/{MyName}"
+@page "/MyPage/MyPageInfo/{MyName}/{MyAge:int}"
+@page "/MyPage/MyPageInfo"
+@page "/pageInfo"
+
+
+<h3>MyPageInfo</h3>
+
+<hr />
+
+<h4> @(MyName ?? "Not Set") </h4>
+<h4> @MyAge </h4>
+
+
+<p>
+    This is full information about my page,
+    Pla Pla Pla ..............
+</p>
+
+@code {
+
+    [Parameter]
+    public string? MyName { get; set; }
+
+
+
+    [Parameter]
+    public int MyAge { get; set; }
+
+}

@@ -1,0 +1,7 @@
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
+
+builder.Services.AddTransient<IStudentsService, StudentsService>();
+builder.Services.AddSingleton<IStudentsService, StudentsService>();
+builder.Services.AddScoped<IStudentsService, StudentsService>();
+

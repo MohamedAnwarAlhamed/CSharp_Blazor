@@ -1,0 +1,29 @@
+-  Introduction To Blazors Server Files contents
+-  Introduction To Blazors Web Assembily Files contents
+-  Blazor Coding Style 
+-  Routing and Navigation Manager
+-  Sending parameters through blazor components
+-  dependency injection
+-  blazor partial class
+-  Using Edit Forms in Blazor
+-  Form Validations with data annotations
+-  Using JavaScript in blazor components
+-  Reusability feature in blazor
+-  Send parameters to balzor components
+-  using blazor components fragments
+-  Life Cycle
+        SetParameterAsync
+        Onintialized/OnintializedAsync
+        OnparameterSet/OnparameterSetAsync
+        StateHasChanged(Related Events)
+        BuildRenderTree
+        ShouldRender
+        OnAfterRender/OnAfterRenderAsync
+        Dispose
+-  Blazor Components Libraries
+-  add Extrnal Libraries
+
+Key Words:-
+@page, @Code, @Variablename, [Parameter], @inject, @using, @if else, @foreach, <component typeof(---) render-mode = "-------------"/>, @Body, href = "componentName", <NavLink></NavLink>, @bind, @, [Inject], ComponentBase, partial Class, <EditForm Model="-----" OnValidSubmit></EditForm>, <InputText>, @bind-value, <InputNumber>, <DataAnnotationValidator/>, <ValidationSummary/>, <ValidationMessage></ValidationMessage>,  @ref, ChildContent 
+
+Events @click="FunctionName"

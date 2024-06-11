@@ -1,0 +1,130 @@
+﻿@page "/Students"
+@using BlazorServerAppTest1.Data;
+@using BlazorServerAppTest1.Components;
+@inject IStudentsService studentsService;
+@inject IJSRuntime myJs; 
+@*@implements IDisposable;*@
+
+<h3>Students</h3>
+<hr />
+<MyValidator msg="@theMsg" useFragment="true" isVisable="visable">
+    <fragment>
+        @if (myDate != null)
+        {
+            <br />
+            <span>
+                <b>date:</b> @myDate
+            </span>
+        }
+    </fragment>
+</MyValidator>
+@* <div id="validationSection" class="col-10 alert alert-info">
+</div> *@
+
+<EditForm Model="student" OnValidSubmit="addStudent">
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="col-12 row">
+        <label class="col-2">Student Name:</label>
+        <input @ref="refStudentName" class="form-control col-3" @bind="student.StudentName"
+                   placeholder="Student Name" />
+        <ValidationMessage For="() => student.StudentName"></ValidationMessage>
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">Student Id:</label>
+        <InputNumber class="form-control col-3" @bind-Value="student.StudentId" />
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">Student Age:</label>
+        <InputNumber class="form-control col-3" @bind-Value="student.StudentAge"/>
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">Student Phone:</label>
+        <InputText class="form-control col-3" @bind-Value="student.StudentPhone"
+                   placeholder="Phone" />
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">Student Grade:</label>
+        <InputNumber class="form-control col-3" @bind-Value="student.StudentGrade" />
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">birthdate:</label>
+        <InputDate class="form-control col-3" @bind-Value="student.birthdate" />
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">email:</label>
+        <InputText class="form-control col-3" @bind-Value="student.email" />
+    </div>
+
+    <div class="col-12 row">
+        <label class="col-2">school:</label>
+        <InputSelect @bind-Value="student.school" class="form-control col-3">
+            @if (schools != null)
+            {
+              foreach(var school in schools)
+              {
+                    <option value="@school"> @school </option>
+              }
+            }
+        </InputSelect>
+    </div>
+
+    <br />
+    <div class="col-12 row">
+        <div class="col-6">
+            <input type="submit" class="form-control col-1 btn btn-primary" value="Save" />
+        </div>
+        <div class="col-6">
+            <input type="submit" class="form-control col-1 btn btn-info" value="clear" />
+        </div>
+    </div>
+</EditForm>
+
+<hr />
+<div class="col-12">
+    @foreach (var st in students)
+    {
+         <div class="row">
+             <div class="col-2">
+                 <NavLink href="@($"/Students/Detials/{st.StudentId}")">
+                     @st.StudentName
+                 </NavLink>
+             </div>
+
+             <div class="col-4">
+                <p><strong>Age:</strong> : @st.StudentGrade</p>
+            </div>         
+         </div>
+    }
+
+    <div class="row">
+        <div class="col">
+            <p>@studentsService.GetDateTime()</p>
+            <p>@studentsService.GetSystemVersion()</p>
+        </div>
+    </div>
+</div>
+
+@* @code {
+
+    public List<Student> students { get; set; }
+    @* public IStudentsService studentsService { get; set; } *@
+    @* public StudentsService studentsService { get; set; } *@
+
+
+
+    protected override void OnInitialized()
+    {
+        @* studentsService = new StudentsService(); *@
+        students = studentsService.GetStudents();
+    }
+
+} *@
